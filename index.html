@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filosofía - Unidades</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" id="mainPage">
+        <div class="header">
+            <h1>Filosofía</h1>
+        </div>
+
+        <div class="cards-container">
+            <!-- Card 1 -->
+            <div class="card-wrapper">
+                <div class="card">
+                    <div class="card-face card-front">
+                        <span class="card-label">cards</span>
+                        <h2 class="card-title">1Ra Unidad</h2>
+                    </div>
+                    <div class="card-face card-back">
+                        <p class="card-description">
+                            Introducción:
+                            ¿Qué es la filosofía?,
+                            Creencias mayas,
+                            Disciplinas de la filosofía,
+                            Filósofos y su filosofía.
+                            HECHO POR GRACIELA REYES
+                        </p>
+                        <a href="#" class="card-button" onclick="loadUnit(1); return false;">Ver Unidad</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card-wrapper">
+                <div class="card">
+                    <div class="card-face card-front">
+                        <span class="card-label">cards</span>
+                        <h2 class="card-title">2da Unidad</h2>
+                    </div>
+                    <div class="card-face card-back">
+                        <p class="card-description">
+                            Introducción:
+                            La lógica,
+                            Principios de identidad, contradicción y tercero excluido,
+                            Razonamiento, Silogismos, Falacias,
+                            Lenguaje y lógica proposicional.
+                            HECHO POR JONATHAN GUITZOL
+                        </p>
+                        <a href="#" class="card-button" onclick="loadUnit(2); return false;">Ver Unidad</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card-wrapper">
+                <div class="card">
+                    <div class="card-face card-front">
+                        <span class="card-label">cards</span>
+                        <h2 class="card-title">3Ra Unidad</h2>
+                    </div>
+                    <div class="card-face card-back">
+                        <p class="card-description">
+                            Introducción:
+                            Conocimiento científico,
+                            Método científico,
+                            Ciencias sociales y naturales,
+                            Ciencia aplicada y tecnología.
+                            HECHO POR MARIANA CASTRO
+                        </p>
+                        <a href="#" class="card-button" onclick="loadUnit(3); return false;">Ver Unidad</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Unidad 1 -->
+    <div class="unit-page" id="unit1" style="display: none;">
+        <a href="#" class="back-button" onclick="goBack(); return false;">← Volver a Inicio</a>
+        
+        <div class="unit-header">
+            <h1>Unidad 1</h1>
+            <p class="card-description">Introducción a la Filosofía</p>
+        </div>
+
+        <section class="content-section">
+            <h2 class="section-title">Tema 1: ¿Qué es la Filosofía?</h2>
+            <p class="tema-description">
+                Es una disciplina académica que reflexiona sobre la esencia, las causas y los efectos de la realidad, especialmente sobre el ser humano. 
+                Nace en la antigua Grecia, cuando los pensadores comenzaron a buscar explicaciones racionales en lugar de mitológicas.
+                La filosofía busca comprender el porqué de las cosas, desarrollar el pensamiento crítico y analizar los fundamentos del conocimiento, la moral y la existencia.
+                Su objetivo principal es alcanzar la sabiduría, entendida como el conocimiento profundo y reflexivo de la vida y el universo.
+            </p>
+            <div class="images-container">
+                <img src="img/imagen1.jpg" alt="Filosofía antigua" class="tema-image">
+                <img src="img/imagen2.jpg" alt="Pensadores griegos" class="tema-image">
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Tema 2: Creencias Mayas</h2>
+            <p class="tema-description">
+                Los mayas fueron una civilización profundamente espiritual. Creían en muchos dioses relacionados con la naturaleza, 
+                el sol, la lluvia, la luna y el maíz, que consideraban sagrado. Su cosmovisión giraba en torno a ciclos eternos del universo.
+                Consideraban que el tiempo era cíclico, y que la vida y la muerte eran parte de un mismo proceso. 
+                Practicaban rituales, ofrendas y observaciones astronómicas que vinculaban la vida humana con los movimientos de los astros. 
+                Para los mayas, el equilibrio con la naturaleza y los dioses garantizaba la armonía del cosmos.
+            </p>
+            <div class="images-container">
+                <img src="img/imagen3.jpg" alt="Cultura Maya" class="tema-image">
+                <img src="img/imagen4.jpg" alt="Templo Maya" class="tema-image">
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Tema 3: Disciplinas de la Filosofía</h2>
+            <p class="tema-description">
+                Las principales disciplinas son:
+                Metafísica (el ser y la existencia),
+                Epistemología (el conocimiento),
+                Ética (la moral),
+                Estética (la belleza y el arte),
+                Lógica (el pensamiento correcto),
+                y Filosofía política (la sociedad y la justicia).
+                Cada disciplina permite abordar los distintos aspectos de la realidad humana y natural. 
+                Estas ramas se complementan para ofrecer una comprensión integral del mundo, la verdad y los valores que rigen la vida humana.
+            </p>
+            <div class="images-container">
+                <img src="img/imagen5.jpg" alt="Disciplinas filosóficas" class="tema-image">
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Tema 4: Filósofos y su Filosofía</h2>
+            <p class="tema-description">
+                - <b>Sócrates:</b> “Conócete a ti mismo”, promovió el diálogo y la reflexión ética. Enseñaba que la sabiduría comienza con reconocer la propia ignorancia. <br>
+                - <b>Platón:</b> Defendió la existencia del mundo de las ideas, un mundo perfecto e inmutable que sirve de modelo al mundo físico. <br>
+                - <b>Aristóteles:</b> Basó su pensamiento en la observación y la lógica. Consideraba que el conocimiento surge de la experiencia. <br>
+                - <b>Descartes:</b> Padre de la filosofía moderna. Propuso la duda metódica como herramienta para alcanzar la verdad: “Pienso, luego existo”.
+            </p>
+            <div class="images-container">
+                <img src="img/imagen6.jpg" alt="Grandes filósofos" class="tema-image">
+            </div>
+        </section>
+    </div>
+
+    <!-- Unidad 2 -->
+    <div class="unit-page" id="unit2" style="display: none;">
+        <a href="#" class="back-button" onclick="goBack(); return false;">← Volver a Inicio</a>
+        
+        <div class="unit-header">
+            <h1>Unidad 2</h1>
+            <p class="card-description">Lógica y Razonamiento</p>
+        </div>
+
+        <section class="content-section">
+            <h2 class="section-title">Tema 1: La Lógica</h2>
+            <p class="tema-description">
+                La lógica es la ciencia del pensamiento correcto. Estudia las formas válidas de razonamiento, los argumentos y su estructura.
+                Es una herramienta fundamental para la filosofía, la ciencia y la vida cotidiana, ya que permite analizar y evaluar afirmaciones con base en la razón y la coherencia.
+                Gracias a la lógica podemos distinguir los argumentos válidos de los inválidos y evitar errores en el pensamiento.
+            </p>
+            <div class="images-container">
+                <img src="img/imagen7.jpg" alt="Lógica filosófica" class="tema-image">
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Tema 2: Principio de identidad y no contradicción</h2>
+            <p class="tema-description">
+                - <b>Identidad:</b> Todo objeto es igual a sí mismo (A es A).  
+                - <b>No contradicción:</b> Nada puede ser y no ser al mismo tiempo bajo el mismo aspecto.
+                Estos principios son fundamentales para el razonamiento lógico, ya que garantizan la coherencia del pensamiento. 
+                Sin ellos, no sería posible distinguir lo verdadero de lo falso, ni construir conocimientos sólidos y racionales.
+            </p>
+            <div class="images-container">
+                <img src="img/imagen8.jpg" alt="Principio de identidad" class="tema-image">
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Tema 3: Principio del tercero excluido</h2>
+            <p class="tema-description">
+                Entre dos proposiciones opuestas no hay término medio: una debe ser verdadera y la otra falsa.
+                Este principio asegura que toda afirmación tiene solo dos posibles valores: verdadero o falso.
+                Es la base de la lógica binaria, usada incluso en los sistemas informáticos modernos.
+            </p>
+            <div class="images-container">
+                <img src="img/imagen9.jpg" alt="Tercero excluido" class="tema-image">
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Tema 4: Razonamiento o argumentación</h2>
+            <p class="tema-description">
+                El razonamiento es el proceso mental mediante el cual obtenemos conclusiones a partir de premisas.
+                Es la base del pensamiento crítico y de la argumentación lógica. 
+                En la filosofía, la argumentación se utiliza para defender ideas, refutar errores y construir teorías coherentes sobre la realidad.
+            </p>
+            <div class="images-container">
+                <img src="img/imagen10.jpg" alt="Razonamiento lógico" class="tema-image">
+                <img src="img/imagen11.jpg" alt="Diálogo argumentativo" class="tema-image">
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Tema 5: Silogismos</h2>
+            <p class="tema-description">
+                Un silogismo es un razonamiento compuesto por dos premisas y una conclusión.  
+                Ejemplo: “Todos los hombres son mortales. Sócrates es hombre. Por tanto, Sócrates es mortal.”
+                Este tipo de razonamiento fue desarrollado por Aristóteles y constituye la base de la lógica clásica.
+                Permite deducir conclusiones universales a partir de verdades generales y particulares.
+            </p>
+            <div class="images-container">
+                <img src="img/imagen12.jpg" alt="Silogismo de Aristóteles" class="tema-image">
+                <img src="img/imagen13.jpg" alt="Ejemplo de silogismo" class="tema-image">
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Tema 6: Razonamiento deductivo e inductivo</h2>
+            <p class="tema-description">
+                - <b>Deductivo:</b> Va de lo general a lo particular. Se basa en la aplicación de principios generales a casos específicos.  
+                - <b>Inductivo:</b> Va de casos particulares a una conclusión general. Se usa en la ciencia para formular teorías a partir de observaciones.
+                Ambos razonamientos son esenciales en el pensamiento crítico y la construcción del conocimiento.
+            </p>
+            <div class="images-container">
+                <img src="img/imagen14.jpg" alt="Razonamiento deductivo" class="tema-image">
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Tema 7: Tipos de falacias</h2>
+            <p class="tema-description">
+                Las falacias son errores en el razonamiento que parecen válidos, pero en realidad no lo son.  
+                Pueden ser intencionales o accidentales y se usan con frecuencia para manipular opiniones.  
+                Ejemplos: <b>Ad hominem</b> (atacar a la persona en lugar del argumento), <b>apelación a la autoridad</b>, <b>falsa causa</b> y <b>apelación a la emoción</b>.
+            </p>
+            <div class="images-container">
+                <img src="img/imagen15.jpg" alt="Falacias lógicas" class="tema-image">
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Tema 8: Lenguaje y lógica proposicional</h2>
+            <p class="tema-description">
+                La lógica proposicional analiza proposiciones simples y compuestas, unidas por conectivos como “y”, “o”, “no”, “si... entonces”.
+                Es fundamental en el estudio del pensamiento formal, la matemática y la informática, donde las proposiciones se usan para establecer relaciones de verdad o falsedad.
+            </p>
+            <div class="images-container">
+                <img src="img/imagen16.jpg" alt="Lógica proposicional" class="tema-image">
+                <img src="img/imagen17.jpg" alt="Conectivos lógicos" class="tema-image">
+            </div>
+        </section>
+    </div>
+
+    <!-- Unidad 3 -->
+    <div class="unit-page" id="unit3" style="display: none;">
+        <a href="#" class="back-button" onclick="goBack(); return false;">← Volver a Inicio</a>
+        
+        <div class="unit-header">
+            <h1>Unidad 3</h1>
+            <p class="card-description">Ciencia y Conocimiento</p>
+        </div>
+
+        <section class="content-section">
+            <h2 class="section-title">Tema 1: Conocimiento Científico</h2>
+            <p class="tema-description">
+                Es el saber obtenido mediante la observación, la experimentación y el razonamiento, siguiendo un método sistemático y verificable.
+                Se caracteriza por ser objetivo, comprobable y universal. 
+                Permite generar teorías, leyes y modelos que explican fenómenos naturales y sociales, contribuyendo al desarrollo humano y tecnológico.
+            </p>
+            <div class="images-container">
+                <img src="img/imagen18.jpg" alt="Conocimiento científico" class="tema-image">
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Tema 2: Método Científico</h2>
+            <p class="tema-description">
+                Es el conjunto de pasos ordenados que permiten desarrollar una investigación. 
+                Incluye la observación de hechos, la formulación de hipótesis, la experimentación, el análisis de resultados y la conclusión. 
+                Este proceso busca garantizar la validez de los conocimientos adquiridos.
+            </p>
+            <div class="images-container">
+                <img src="img/imagen19.jpg" alt="Método científico" class="tema-image">
+                <img src="img/imagen20.jpg" alt="Proceso de observación" class="tema-image">
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Tema 3: Ciencias Sociales</h2>
+            <p class="tema-description">
+                Estudian al ser humano en sociedad: su comportamiento, cultura, economía, política y relaciones. 
+                Ejemplos: Sociología, Antropología, Economía, Psicología e Historia.
+                Las ciencias sociales buscan entender cómo los individuos interactúan en grupo y cómo las instituciones influyen en la vida colectiva.
+            </p>
+            <div class="images-container">
+                <img src="img/imagen21.jpg" alt="Ciencias Sociales" class="tema-image">
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Tema 4: Conocimiento Empírico</h2>
+            <p class="tema-description">
+                Surge de la experiencia directa, la observación y los sentidos. 
+                Es subjetivo, depende de la percepción individual y no necesariamente se comprueba científicamente.
+                Es la base del conocimiento común, sobre el cual se apoya la ciencia para desarrollar explicaciones racionales y verificables.
+            </p>
+            <div class="images-container">
+                <img src="img/imagen22.jpg" alt="Conocimiento empírico" class="tema-image">
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Tema 5: Ciencias Naturales</h2>
+            <p class="tema-description">
+                Estudian la naturaleza y sus leyes mediante el método científico. 
+                Analizan fenómenos físicos, químicos y biológicos para comprender el universo. 
+                Ejemplos: física, química, biología, astronomía y geología.
+                Estas ciencias han permitido grandes avances en medicina, energía, ecología y tecnología.
+            </p>
+            <div class="images-container">
+                <img src="img/imagen23.jpg" alt="Ciencias naturales" class="tema-image">
+                <img src="img/imagen24.jpg" alt="Naturaleza y ciencia" class="tema-image">
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Tema 6: Efectos de la Ciencia Aplicada y el Desarrollo Tecnológico</h2>
+            <p class="tema-description">
+                La ciencia aplicada y la tecnología han transformado la vida humana, mejorando la salud, la comunicación y el transporte.
+                Sin embargo, también plantean desafíos éticos como la contaminación, la automatización laboral y la privacidad digital. 
+                El uso responsable del conocimiento científico es esencial para un desarrollo sostenible y equilibrado.
+            </p>
+            <div class="images-container">
+                <img src="img/imagen25.jpg" alt="Desarrollo tecnológico" class="tema-image">
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
