@@ -26,3 +26,22 @@ function goBack() {
     // Scroll al inicio
     window.scrollTo(0, 0);
 }
+
+
+
+// ======= Alternar modo oscuro global =======
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('theme');
+
+// Si el usuario ya tenía modo oscuro, mantenerlo
+if (savedTheme === 'dark') {
+    document.body.classList.add('dark');
+    themeToggle.textContent = '☀️';
+}
+
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    const isDark = document.body.classList.contains('dark');
+    themeToggle.textContent = isDark ? '☀️' : '🌙';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});

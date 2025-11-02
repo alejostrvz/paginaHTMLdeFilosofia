@@ -1,321 +1,222 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ===================== RESET ===================== */
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* ===================== THEME TOKENS ===================== */
+:root{
+  /* colores base (tema claro) */
+  --bg-grad: linear-gradient(135deg,#1c150f 0%,#494027 50%,#6b4b41 100%);
+  --glass: rgba(28,21,15,.6);
+  --glass-strong: rgba(28,21,15,.9);
+  --glass-soft: rgba(73,64,39,.7);
+  --glass-back: linear-gradient(145deg, rgba(73,64,39,.95), rgba(107,75,65,.85));
+  --border: #6b4b41;
+  --text: #fff;
+  --muted: #726b68;
+  --chip: rgba(255,255,255,.6);
+
+  /* botones */
+  --btn-grad: linear-gradient(135deg,#494027,#622824);
+  --btn-grad-hover: linear-gradient(135deg,#622824,#6b4b41);
+
+  /* sombras */
+  --shadow-1: 0 10px 40px rgba(0,0,0,.5);
+  --shadow-2: 0 15px 60px rgba(98,40,36,.3);
 }
 
-body {
-    font-family: Sans-Serif, Arial, sans-serif;
-    background: linear-gradient(135deg, #1c150f 0%, #494027 50%, #6b4b41 100%);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+/* override en modo oscuro */
+body.dark{
+  --bg-grad: radial-gradient(circle at top left,#0f0f0f,#1b1b1b,#2a2a2a);
+  --glass: rgba(35,35,35,.55);
+  --glass-strong: rgba(30,30,30,.9);
+  --glass-soft: rgba(55,55,55,.75);
+  --glass-back: linear-gradient(145deg,rgba(30,30,30,.95),rgba(55,55,55,.9));
+  --border: rgba(255,255,255,.15);
+  --text: #fff;              /* 🔥 fuerza blanco en oscuro */
+  --muted: #d6d6d6;
+  --chip: rgba(255,255,255,.75);
+
+  --btn-grad: linear-gradient(45deg,#680824e7,#461736);
+  --btn-grad-hover: linear-gradient(45deg,#461736,#680824e7);
+
+  --shadow-1: 0 10px 40px rgba(0,0,0,.7);
+  --shadow-2: 0 15px 60px rgba(0,0,0,.55);
 }
 
-.container {
-    width: 100%;
-    max-width: 1400px;
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+/* ===================== BASE ===================== */
+body{
+  font-family: Sans-Serif, Arial, sans-serif;
+  background: var(--bg-grad);
+  color: var(--text);
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  padding:20px;
+  transition: background .6s ease, color .6s ease;
 }
 
-.header {
-    background: rgba(28, 21, 15, 0.6);
-    border: 2px solid #6b4b41;
-    border-radius: 20px;
-    padding: 30px;
-    text-align: center;
-    backdrop-filter: blur(10px);
+body, .card-face, .header, .unit-header {
+  transition: background 0.6s ease, color 0.6s ease, border-color 0.6s ease, box-shadow 0.6s ease;
 }
 
-.header h1 {
-    color: #726b68;
-    font-size: 3.5em;
-    font-weight: 300;
-    letter-spacing: 3px;
+/* ===================== CONTENEDOR ===================== */
+.container{width:100%;max-width:1400px;min-height:90vh;display:flex;flex-direction:column;gap:30px}
+
+/* ===================== HEADER ===================== */
+.header{
+  background: var(--glass);
+  border:2px solid var(--border);
+  border-radius:20px;
+  padding:30px;
+  text-align:center;
+  backdrop-filter: blur(10px);
 }
 
-.cards-container {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+.footer {
+  margin-top: 50px;
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  letter-spacing: 1px;
+  animation: fadeIn 2s ease;
 }
 
-.card-wrapper {
-    perspective: 1000px;
+.header h1{
+  color: var(--muted);      /* en claro queda gris elegante; en oscuro se aclara */
+  font-size:3.5em;font-weight:300;letter-spacing:3px;
+}
+.subtitulo{
+  font-size:1.2em;color:var(--chip);
+  letter-spacing:2px;font-weight:300;margin-top:10px;
+  text-transform:uppercase;text-shadow:0 1px 4px rgba(0,0,0,.3);
 }
 
-.card {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
-    cursor: pointer;
+/* ===================== GRID TARJETAS ===================== */
+.cards-container{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+
+/* contenedor del flip */
+.card-wrapper{
+  perspective:1000px;
+  min-height:520px;        /* 🔥 asegura altura para que el dorso sea clickeable */
+  animation:fadeInUp 1s ease both;
 }
 
-.card-wrapper:hover .card {
-    transform: rotateY(180deg);
+/* tarjeta 3D */
+.card{
+  width:100%;height:100%;
+  position:relative;
+  transform-style:preserve-3d;
+  transition:transform .8s cubic-bezier(.4,.2,.2,1);
+  will-change:transform;
 }
 
-.card-face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 20px;
-    border: 2px solid #6b4b41;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-    background: linear-gradient(145deg, rgba(28, 21, 15, 0.9), rgba(73, 64, 39, 0.7));
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    transition: box-shadow 0.3s ease;
+/* giro por hover */
+.card-wrapper:hover .card{ transform: rotateY(180deg); }
+
+/* caras */
+.card-face{
+  position:absolute;inset:0;
+  border-radius:20px;border:2px solid var(--border);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  padding:40px;
+  background: linear-gradient(145deg, var(--glass-strong), var(--glass-soft));
+  box-shadow: var(--shadow-1);
+  backface-visibility:hidden;
+  transform-style:preserve-3d;
+  color: var(--text);                 /* 🔥 texto SIEMPRE blanco */
+  transition: box-shadow .3s ease, background .3s ease, color .3s ease, border-color .3s ease;
+}
+.card-front{ z-index:2; transform:rotateY(0) }
+.card-back{
+  transform:rotateY(180deg);
+  background: var(--glass-back);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
 }
 
-.card-front {
-    z-index: 2;
+/* eleva sombras al pasar */
+.card-wrapper:hover .card-face{ box-shadow: var(--shadow-2) }
+
+/* textos */
+.card-label{
+  color: var(--muted);
+  font-size:.9em;letter-spacing:2px;margin-bottom:20px;text-transform:uppercase
+}
+.card-title{ color:var(--text);font-size:2.5em;font-weight:300;letter-spacing:2px;text-align:center }
+.card-description{
+  color: var(--text);                      /* 🔥 “Hecho por…” no se pierde */
+  font-size:1.2em;line-height:1.8;text-align:center;font-weight:300;margin-bottom:20px;max-width:90%;
 }
 
-.card-back {
-    transform: rotateY(180deg);
-    background: linear-gradient(145deg, rgba(73, 64, 39, 0.95), rgba(107, 75, 65, 0.85));
+/* botón */
+.card-button{
+  background: var(--btn-grad);
+  color:#fff;border:none;padding:12px 30px;border-radius:25px;
+  font-size:1em;cursor:pointer;transition:all .3s ease;text-decoration:none;
+  display:inline-block;margin-top:10px;position:relative;z-index:10;
 }
+.card-button:hover{ background: var(--btn-grad-hover); transform: translateY(-2px); box-shadow:0 5px 20px rgba(0,0,0,.25) }
 
-.card-label {
-    color: #726b68;
-    font-size: 0.9em;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-    text-transform: uppercase;
+/* 💡 HACK importante:
+   Cuando el dorso esté visible queremos que CAPTE los clics y el frente no los bloquee. */
+.card-front{ pointer-events:none; }                 /* el frente no intercepta */
+.card-back{  pointer-events:auto; z-index:3; }      /* el dorso sí intercepta */
+
+/* ===================== UNIDADES ===================== */
+.unit-page{width:100%;max-width:1200px;margin:0 auto;padding:20px;opacity:1;transition:opacity .4s ease}
+.unit-header{
+  background: var(--glass);
+  border:2px solid var(--border);
+  border-radius:20px;padding:40px;text-align:center;backdrop-filter:blur(10px);margin-bottom:30px;
 }
-
-.card-title {
-    color: #ffffff;
-    font-size: 2.5em;
-    font-weight: 300;
-    letter-spacing: 2px;
-    text-align: center;
+.unit-header h1{ color:var(--muted);font-size:3em;font-weight:300;letter-spacing:3px;margin-bottom:10px }
+.back-button{
+  background: var(--btn-grad); color:#fff;border:none;padding:12px 30px;border-radius:25px;
+  font-size:1em;cursor:pointer;transition:all .3s ease;text-decoration:none;display:inline-block;margin-bottom:20px
 }
+.back-button:hover{ background: var(--btn-grad-hover); transform: translateY(-2px); box-shadow:0 5px 20px rgba(0,0,0,.25) }
 
-.card-description {
-    color: #ffffff;
-    font-size: 1.3em;
-    line-height: 1.8;
-    text-align: center;
-    font-weight: 300;
-    margin-bottom: 20px;
+.content-section{
+  background: var(--glass);
+  border:2px solid var(--border);
+  border-radius:20px;padding:30px;margin-bottom:30px;backdrop-filter:blur(10px)
 }
-
-.card-button {
-    background: linear-gradient(135deg, #494027, #622824);
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 25px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 10px;
+.section-title{
+  color:var(--muted);font-size:1.8em;font-weight:300;letter-spacing:2px;margin-bottom:20px;
+  padding-bottom:15px;border-bottom:2px solid var(--border)
 }
+.section-content{ color:var(--text);font-size:1.1em;line-height:1.8;margin-bottom:15px }
 
-.card-button:hover {
-    background: linear-gradient(135deg, #622824, #6b4b41);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(114, 107, 104, 0.4);
+/* imágenes */
+.images-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:20px;width:100%}
+.tema-image{
+  width:100%;height:auto;max-height:350px;object-fit:contain;border-radius:10px;border:2px solid var(--border);
+  background-color:#1c150f;box-shadow:0 4px 15px rgba(0,0,0,.3);transition:transform .3s ease, box-shadow .3s ease
 }
+.tema-image:hover{ transform:scale(1.03); box-shadow:0 8px 25px rgba(0,0,0,.45) }
 
-.card-wrapper:hover .card-face {
-    box-shadow: 0 15px 60px rgba(98, 40, 36, 0.3);
+/* ===================== TOGGLE TEMA ===================== */
+.theme-toggle{
+  position:fixed;top:20px;right:25px;background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.3);border-radius:50%;font-size:1.4rem;color:#fff;
+  cursor:pointer;width:45px;height:45px;backdrop-filter:blur(6px);box-shadow:0 0 10px rgba(255,255,255,.1);
+  transition:all .4s ease; z-index:9999
 }
+.theme-toggle:hover{ transform:scale(1.1); background:rgba(255,255,255,.2) }
 
-/* Responsive */
-@media (max-width: 1024px) {
-    .cards-container {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
+/* ===================== ANIM ===================== */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
 
-    .header h1 {
-        font-size: 2.5em;
-    }
-
-    .card-title {
-        font-size: 2em;
-    }
-
-    .card-description {
-        font-size: 1.1em;
-    }
+/* ===================== RESPONSIVE ===================== */
+@media (max-width:1024px){
+  .cards-container{ grid-template-columns:1fr; gap:20px }
+  .header h1{ font-size:2.5em }
+  .card-title{ font-size:2em }
+  .card-description{ font-size:1.1em }
+  .card-wrapper{ min-height:420px }
 }
-
-@media (max-width: 768px) {
-    .container {
-        height: auto;
-        gap: 20px;
-    }
-
-    .header {
-        padding: 20px;
-    }
-
-    .header h1 {
-        font-size: 2em;
-    }
-
-    .card-wrapper {
-        min-height: 300px;
-    }
-
-    .card-title {
-        font-size: 1.8em;
-    }
-
-    .card-description {
-        font-size: 1em;
-    }
-}
-
-/* Estilos para páginas de unidades */
-.unit-page {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.unit-header {
-    background: rgba(28, 21, 15, 0.8);
-    border: 2px solid #6b4b41;
-    border-radius: 20px;
-    padding: 40px;
-    text-align: center;
-    backdrop-filter: blur(10px);
-    margin-bottom: 30px;
-}
-
-.unit-header h1 {
-    color: #726b68;
-    font-size: 3em;
-    font-weight: 300;
-    letter-spacing: 3px;
-    margin-bottom: 10px;
-}
-
-.back-button {
-    background: linear-gradient(135deg, #494027, #622824);
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 25px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-    margin-bottom: 20px;
-}
-
-.back-button:hover {
-    background: linear-gradient(135deg, #622824, #6b4b41);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(114, 107, 104, 0.4);
-}
-
-.content-section {
-    background: rgba(28, 21, 15, 0.8);
-    border: 2px solid #6b4b41;
-    border-radius: 20px;
-    padding: 30px;
-    margin-bottom: 30px;
-    backdrop-filter: blur(10px);
-}
-
-.section-title {
-    color: #726b68;
-    font-size: 1.8em;
-    font-weight: 300;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #6b4b41;
-}
-
-.section-content {
-    color: #ffffff;
-    font-size: 1.1em;
-    line-height: 1.8;
-    margin-bottom: 15px;
-}
-
-.tema-item {
-    background: rgba(73, 64, 39, 0.5);
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    border-left: 4px solid #622824;
-}
-
-.tema-title {
-    color: #726b68;
-    font-size: 1.3em;
-    margin-bottom: 10px;
-}
-
-.tema-description {
-    color: #ffffff;
-    font-size: 1em;
-    line-height: 1.6;
-}
-
-.images-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.tema-image {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 2px solid #6b4b41;
-}
-
-/* ==== Ajuste adaptable de imágenes en todas las unidades ==== */
-.images-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-    width: 100%;
-}
-
-.tema-image {
-    width: 100%;
-    height: auto;
-    max-height: 350px; /* evita que sean demasiado altas */
-    object-fit: contain; /* mantiene toda la imagen visible sin recortar */
-    border-radius: 10px;
-    border: 2px solid #6b4b41;
-    background-color: #1c150f; /* fondo neutro por si hay transparencia */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.tema-image:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 25px rgba(107, 75, 65, 0.6);
+@media (max-width:768px){
+  .container{ min-height:auto; gap:20px }
+  .header{ padding:20px }
+  .header h1{ font-size:2em }
+  .card-wrapper{ min-height:360px }
+  .card-title{ font-size:1.8em }
+  .card-description{ font-size:1em }
 }
